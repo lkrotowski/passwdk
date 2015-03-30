@@ -1,6 +1,7 @@
-import argparse
+from argparse import ArgumentParser
+from config   import config
 
 def main():
-	parser = argparse.ArgumentParser()
-	args = parser.parse_args()
-	print "Initial version, does nothing."
+	parser = ArgumentParser()
+	args   = parser.parse_args()
+	conf   = config()

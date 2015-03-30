@@ -1,0 +1,3 @@
+# Password directory and file.
+PASSWD_DIR  = $HOME/passwords
+PASSWD_FILE = passwd.json

@@ -16,6 +16,11 @@ Start passwdk using:
 	optional arguments:
 		-h, --help  show this help message and exit
 
+Configuration
+~~~~~~~~~~~~~
+
+Passwdk configuration is stored in $HOME/.passwdkrc file. See `sample configuration file <https://github.com/lkrotowski/passwdk/blob/master/passwdkrc.sample>`_.
+
 Requirements
 ------------
 
