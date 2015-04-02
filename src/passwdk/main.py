@@ -2,6 +2,7 @@ import sys
 from argparse import ArgumentParser
 from config   import config
 from file     import load, save
+from hooks    import post_add
 
 def add(conf):
 	parser = ArgumentParser(usage="%(prog)s add arguments")
@@ -34,6 +35,7 @@ def add(conf):
 
 	data.append(nrec)
 	save(conf, data)
+	post_add(conf, nrec["name"])
 
 def main():
 	valid_actions  = ["add"]

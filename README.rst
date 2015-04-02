@@ -39,6 +39,8 @@ Add new password to password file using:
 
 Only name is required. Other information may be provided multiple times to store whatever information on password entry. You will be prompted for password. If you want to generate that use application designed to do that, e.g. `pwgen <http://sourceforge.net/projects/pwgen/>`_.
 
+After saving changes to password file POST_ADD_HOOK is executed (if defined). It can be used to e.g. commit changes to git repository storing password file (see passwdkrc.sample). NEW_PASSWORD_NAME and PASSWD_FILE env variable can be used in that hook.
+
 Configuration
 ~~~~~~~~~~~~~
 

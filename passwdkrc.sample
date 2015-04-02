@@ -1,3 +1,6 @@
 # Password directory and file.
 PASSWD_DIR  = $HOME/passwords
 PASSWD_FILE = passwd.json
+
+# Hook executed after adding new password entry.
+#POST_ADD_HOOK = "git add $PASSWD_FILE && git commit -m \"Added password entry for ${NEW_PASSWORD_NAME}.\""
