@@ -11,10 +11,33 @@ Start passwdk using:
 .. code-block:: bash
 
 	$ passwdk --help
-	usage: passwdk [-h]
+	usage: passwdk [-h] {add}
+
+	positional arguments:
+	  {add}       action to take
 
 	optional arguments:
-		-h, --help  show this help message and exit
+	  -h, --help  show this help message and exit
+
+Add password
+~~~~~~~~~~~~
+
+Add new password to password file using:
+
+.. code-block:: bash
+
+	$ passwdk add --help
+	usage: passwdk add arguments
+
+	optional arguments:
+	  -h, --help          show this help message and exit
+	  -n NAME             password name
+	  -u USER             user name
+	  -e EMAIL            email
+	  -o NAME VALUE       other informations
+	  -t TAGS [TAGS ...]  password tags
+
+Only name is required. Other information may be provided multiple times to store whatever information on password entry. You will be prompted for password. If you want to generate that use application designed to do that, e.g. `pwgen <http://sourceforge.net/projects/pwgen/>`_.
 
 Configuration
 ~~~~~~~~~~~~~
