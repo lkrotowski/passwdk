@@ -37,11 +37,35 @@ def add(conf):
 	save(conf, data)
 	post_add(conf, nrec["name"])
 
+def get(conf):
+	parser = ArgumentParser(usage="%(prog)s get search terms")
+	parser.add_argument("search", nargs="+", help="search terms")
+	parser.add_argument("-p", dest="password", action="store_true", help="only password without ending new-line")
+	args = parser.parse_args(sys.argv[2:])
+
+	def search(it):
+		name = it["name"] in args.search
+		tags = reduce(lambda b, s: b and "tags" in it and it["tags"].count(s) > 0, args.search, True)
+		return name or tags
+
+	for i, r in enumerate(filter(search, load(conf))):
+		if i > 0: print
+		if args.password:
+			sys.stdout.write(r["pass"])
+		else:
+			print "name:\t{0}".format(r["name"])
+			print "pass:\t{0}".format(r["pass"])
+
+			if "user" in r: print "user:\t{0}".format(r["user"])
+			if "mail" in r: print "mail:\t{0}".format(r["mail"])
+
+			for o in r["othr"] if "othr" in r else []:
+				print "{0}:\t{1}".format(o, r["othr"][o])
+
 def main():
-	valid_actions  = ["add"]
+	valid_actions  = ["add", "get"]
 	actions_parser = ArgumentParser()
 	actions_parser.add_argument("action", choices=valid_actions, help="action to take")
 	actions = actions_parser.parse_args(sys.argv[1:2])
 
-	if actions.action == "add":
-		add(config())
+	globals()[actions.action](config())
