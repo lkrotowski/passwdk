@@ -1,4 +1,4 @@
-import sys
+import sys, complete
 from argparse import ArgumentParser
 from config   import config
 from file     import load, save
@@ -11,6 +11,7 @@ def add(conf):
 	parser.add_argument("-e", dest="email", help="email")
 	parser.add_argument("-o", nargs=2, action="append", dest="other", metavar=("NAME", "VALUE"), help="other informations")
 	parser.add_argument("-t", nargs="+", dest="tags", help="password tags")
+	complete.complete_options(parser, sys.argv[2])
 	args = parser.parse_args(sys.argv[2:])
 
 	if args.other != None:
@@ -41,6 +42,8 @@ def get(conf):
 	parser = ArgumentParser(usage="%(prog)s get search terms")
 	parser.add_argument("search", nargs="+", help="search terms")
 	parser.add_argument("-p", dest="password", action="store_true", help="only password without ending new-line")
+	complete.complete_options(parser, sys.argv[2])
+	complete.complete_names_and_tags(conf, sys.argv[2])
 	args = parser.parse_args(sys.argv[2:])
 
 	def search(it):

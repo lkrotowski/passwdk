@@ -6,7 +6,7 @@ from setuptools import setup, find_packages
 setup(name         = "passwdk",
       description  = "Simple console password manager using json as backend",
       url          = "https://github.com/lkrotowski/passwdk",
-      version      = "0.2.0",
+      version      = "0.2.1",
       packages     = find_packages("src"),
       package_dir  = {"": "src"},
       entry_points = {"console_scripts": ["passwdk=passwdk.main:main"]},

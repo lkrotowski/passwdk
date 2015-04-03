@@ -78,3 +78,8 @@ The latest version is available to install using `pip <http://www.pip-installer.
 .. code-block:: bash
 
 	$ pip install https://github.com/lkrotowski/passwdk/zipball/master
+
+Zsh completion
+~~~~~~~~~~~~~~
+
+To install Zsh completion copy `_passwdk <https://github.com/lkrotowski/passwdk/blob/master/_passwdk>`_ file to directory listed in $fpath (see `zsh-completions-howto <https://github.com/zsh-users/zsh-completions/blob/master/zsh-completions-howto.org>`_).

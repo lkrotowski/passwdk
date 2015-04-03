@@ -1,0 +1,28 @@
+#compdef passwdk
+
+_passwdk_help_add() {
+	local -a options
+	options=(${(f)"$(_call_program passwdk-add passwdk add complete-options)"})
+	_describe 'options' options
+}
+
+_passwdk_help_get() {
+	local -a options names
+	options=(${(f)"$(_call_program passwdk-get passwdk get complete-options)"})
+	names=(${(f)"$(_call_program passwdk-get-nt passwdk get complete-names-and-tags)"})
+	_describe -o 'options' options
+	_describe 'names and tags' names
+}
+
+if (( CURRENT == 2 )); then
+	local -a actions
+	actions=('add:add new password entry'
+	         'get:search password entries'
+	         '-h:show help message')
+	_describe 'values' actions
+else
+	local cmd=${words[2]}
+	if [[ "$cmd" =~ "^(add|get)$" ]]; then
+		_passwdk_help_$cmd
+	fi
+fi
