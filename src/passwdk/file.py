@@ -25,7 +25,7 @@ def save(conf, data):
 	passwd_file = passwd_dir + "/" + os.path.expandvars(conf["PASSWD_FILE"])
 	passwd_tmp  = passwd_file + ".passwdk.tmp"
 	f = open(passwd_tmp, "w")
-	json.dump(data, f, separators=(",", ": "), indent=2)
+	json.dump(data, f, separators=(",", ": "), indent=2, sort_keys=True)
 	f.flush()
 	os.fsync(f.fileno())
 	f.close()
